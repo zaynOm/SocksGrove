@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
+from os import getenv
 
 app = Flask(__name__)
 
-URL = 'postgresql://postgres:postgres@localhost:5432/postgres'
+URL = getenv('DATABASE_URL')
 app.config['SQLALCHEMY_DATABASE_URI'] = URL
 db = SQLAlchemy(app)
 
